@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      </style>
+</head>
+<body>
+    <div>
+        <h1>Simple DOM Todo App</h1>
+        <input type="text" id="inputField" />
+        <button class="btn">click me</button>
+        <div class="todoListsElem"></div>
+      </div>
+
+
+
+
+      <script>
+                 //❌❌ DOM - CRUD (Create, Read, Update, Delete) 👇👇👇
+
+
+    let inputData=document.getElementById('inputField')
+    let btn=document.querySelector('.btn')
+    let todoElem=document.querySelector('.todoListsElem')
+    console.log(todoElem);
+    console.log(inputData);
+    console.log(btn);
+
+
+    const addTodo=()=>{
+        console.log(inputData.value);
+        
+       //createElement 👇👇👇👇
+       
+       let pElem=document.createElement('p')
+       pElem.textContent=inputData.value
+       console.log(pElem);  //return <p>apple</P> if inputData is apple
+
+      //appendChild(node)
+      todoElem.append(pElem)   //here p tag add to the todoElem
+
+
+      //removeChild(node)
+       
+       
+    }
+
+
+    btn.addEventListener('click',()=>{
+        addTodo()
+
+    })
+    
+    
+    todoElem.addEventListener('click',(event)=>{
+        console.log(event.target);
+
+        let currElem=event.target   //here created elem is stored in currelem
+        currElem.remove()  //here if we touch createde elem it will remove
+        
+    })
+
+
+
+
+      </script>
+</body>
+</html>

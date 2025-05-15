@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style=" height: 100vh;  display: flex; justify-self: center; align-items: center;">
+    <section>
+        <input type="text" id="myInput" 
+        name="username" placeholder="type something..." autocomplete="off">
+
+        <div class="output">
+            <p class="inputValue">Input Value:</p>
+            <p class="inputName">Input name:</p>
+            <p class="inputType">Input Type:</p>
+            <p class="eventType">Event Type:</p>
+        </div>
+    </section>
+
+    <script>
+        const myInput=document.getElementById('myInput')
+        const inputValue=document.querySelector('.inputValue')
+        const inputName=document.querySelector('.inputName')
+        const inputType=document.querySelector('.inputType')
+        const eventType=document.querySelector('.eventType')
+
+
+        const handleInput=(event)=>{
+            console.log(event);
+
+            console.log('Input Value:',event.target.value);
+            console.log('Input name:',event.target.name);
+            console.log('Input Type:',event.inputType);
+            console.log('Event Type:',event.type);
+
+
+            
+            
+
+            inputValue.textContent=`Input Value: ${event.target.value}`
+            inputName.textContent=`Input name: ${event.target.name}`
+            inputType.textContent=`Input Type: ${event.inputType}`
+            eventType.textContent=`Event Type: ${event.type}`
+            
+            
+            
+        }
+
+
+
+
+        myInput.addEventListener('input',handleInput)   //here data is change when i write something in input field
+        //myInput.addEventListener('change',handleInput)   //in this event if i write in a 
+                                                            // input field and than after i put my 
+                                                            // curson out from the input field than 
+                                                            // data is change
+    </script>
+</body>
+</html>

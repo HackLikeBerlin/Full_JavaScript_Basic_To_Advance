@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: black;
+            
+        }
+
+       #addBtn ,#getBtn,#removeBtn{
+        height: 50px;
+        width: 250px;
+        border-radius: 20px;
+        font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        margin-right: 30px;
+        font-size: 17px;
+       }
+
+       #addBtn{
+        background-color: yellow;
+       }
+
+       #getBtn{
+        background-color: green;
+       }
+
+       #removeBtn{
+        background-color: red;
+       }
+
+       #addBtn:hover,#getBtn:hover,#removeBtn:hover{
+        background-color: black;
+        color: whitesmoke;
+        border: 2px solid whitesmoke;
+       }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="addBtn">Add Data To LocalStorage</button>
+        <button id="getBtn">Get Data To LocalStorage</button>
+        <button id="removeBtn">Delete Data To LocalStorage</button>
+    </div>
+
+
+    <script>
+        const studentData={
+            firstName:'Adarsh',
+            lastName:'Rai',
+            age:22,
+            gender:'Male',
+            grade:'A',
+            course:['Math','Science','English'],
+            address:{
+                street:'Brahmanand kamatghar',
+                city:'Thane',
+                state:'Maharashtra',
+                zipCode:123456
+            },
+        }
+
+    const addBtn=document.getElementById('addBtn')
+    const getBtn=document.getElementById('getBtn')   
+    const removeBtn=document.getElementById('removeBtn')    
+    
+    const addData=()=>{
+        localStorage.setItem('ObjectData',JSON.stringify(studentData))
+        
+    }
+
+    const getData=()=>{
+        const retriveStudentData=JSON.parse(localStorage.getItem("ObjectData")) 
+        console.log(retriveStudentData);
+    }
+
+    const removeData=()=>{
+        localStorage.removeItem('ObjectData  ')
+    }
+
+    addBtn.addEventListener('click',addData)
+    getBtn.addEventListener('click',getData)
+    removeBtn.addEventListener('click',removeData)
+    </script>
+</body>
+</html>

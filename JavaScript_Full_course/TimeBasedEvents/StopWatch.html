@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section>
+        <p id="countDown">0</p>
+        <div class="buttons">
+            <button class="start_btn">Start</button>
+            <button class="reset_btn">Reset</button>
+            <button class="Stop_btn">Stop</button>
+            <button class="Time_btn">getTime</button>
+            <button class="clear_btn">clearTime</button>
+        </div>
+        <div class="resetValue"></div>
+    </section>
+
+
+    <script>
+        let countDown=document.getElementById('countDown')
+        let resetValue=document.querySelector('.resetValue')
+        let reset_btn=document.querySelector('.reset_btn')
+        let start_btn=document.querySelector('.start_btn')
+        let Stop_btn=document.querySelector('.Stop_btn')
+        let clear_btn=document.querySelector('.clear_btn')
+        let Time_btn=document.querySelector('.Time_btn')
+        
+        
+        let startCount=0
+        let intervalId
+        
+         
+
+
+        //function to start Timer
+        const startTimer=()=>{
+           intervalId=setInterval(()=>{
+                countDown.innerHTML=++startCount
+            },1000)
+        }
+
+
+        //Function to stop the timer and show stop time
+        const stopTimer=()=>{
+            clearInterval(intervalId)
+        }
+        
+        //function to reset Time
+
+        const resetTime=()=>{
+            startCount=0;
+            countDown.innerHTML=startCount;
+            clearInterval(intervalId)
+        }
+       
+
+        //function to show stop value
+        const showStopValue=()=>{
+           let newPara=document.createElement('p')
+           newPara.innerText=`The Stop Value is ${startCount}`;
+           resetValue.append(newPara)
+          
+           
+           
+        }
+
+        //function to clearTime Value
+
+        const ClearTimeValue=()=>{
+            resetValue.innerHTML=""
+            
+            
+        }
+
+
+        start_btn.addEventListener('click',startTimer)
+        Stop_btn.addEventListener('click',stopTimer)
+        reset_btn.addEventListener('click',resetTime)
+        Time_btn.addEventListener('click',showStopValue)
+        clear_btn.addEventListener('click',ClearTimeValue)
+
+
+
+    </script>
+   
+</body>
+</html>

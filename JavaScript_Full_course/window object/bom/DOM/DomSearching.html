@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        <h1 id="heading">DOM API</h1>
+        <ul class="list-of--nodes">
+          <li>1 node</li>
+          <li>2 node</li>
+          <li>3 node</li>
+          <!-- <li>4th node </li> -->
+          <li>4 node</li>
+          <li style="display: none">5 node</li>
+        </ul>
+      </div>
+
+      <div>
+        <h1>DOM API 2</h1>
+        <input type="text" />
+        <button>click me</button>
+        <div class="value"></div>
+      </div>
+
+
+      <script>
+
+                    // 🔧🔧 Lets see dom Searchingn  👇👇👇
+
+        //? getElementById(id): Find an element by its ID.
+
+        let findElementId=document.getElementById('heading')
+        // let findElementId=document.getElementById('#heading') ❌❌ not use hastag
+        console.log(findElementId);
+
+
+        let findInnerTextOfElement=findElementId.innerHTML 
+        let findInnerTextOfElement2=findElementId.innerText 
+        let findInnerTextOfElement3=findElementId.textContent 
+
+        //both three are same and give same result 👆👆👆
+        console.log(findInnerTextOfElement);   //return DOM API because innerText of h1 tage is DOM API
+        console.log(findInnerTextOfElement2);
+        console.log(findInnerTextOfElement3);
+        
+
+
+        //? getElementsByClassName(className): Find elements with a specific class name.
+
+        let findElementClass=document.getElementsByClassName('list-of--nodes')
+        console.log(findElementClass);  //return HTMLCollection [ul.list-of--nodes]
+
+        console.log(...findElementClass);  // now it resturn proper data ==> ul.list-of--nodes  beacsue it is a iteratable
+        
+        for(let elem of findElementClass){
+            console.log(elem);
+            console.log(elem.innerHTML);
+            //it show all data if we use innerHtml 👇👇👇👇
+
+        //     <li>1 node</li>
+        //   <li>2 node</li>
+        //   <li>3 node</li>
+        //   <!-- <li>4th node </li> -->
+        //   <li>4 node</li>
+        //   <li style="display: none">5 node</li>
+
+        console.log(elem.textContent);
+
+        //it return including comment the white space
+        // it return also node 5 because  we put css to hide note 
+        // therefore css is not apply in textContent
+
+
+        //   1 node
+        //   2 node
+        //   3 node
+          
+        //   4 node
+        //   5 node
+        console.log(elem.innerText);
+
+        //it return based on what we apply in css and not include comment
+
+        // 1 node
+        // 2 node
+        // 3 node
+        // 4 node
+            
+            
+        }  //same return  <ul class="list-of--nodes"> </ul>
+
+
+
+
+
+    //? getElementsByTagName(tagName): Find elements with a specific tag name.
+
+    let findElementTagName=document.getElementsByTagName('li')
+    console.log(findElementTagName);  //return HTMLCollection(5) [li, li, li, li, li]  so here we can also add loop
+    
+    for(let elements of findElementTagName){
+        console.log(elements);  // return all 5 li
+        
+    }
+
+
+
+
+    //? querySelector(selector): Find the first element that matches the specified CSS
+
+    let findElemUsingQuerySelector=document.querySelector('#heading')  //use hastag for id 
+    console.log(findElemUsingQuerySelector); //return <h1 id="heading">DOM API</h1>
+    console.log(findElemUsingQuerySelector.innerHTML);  //also use innertext return DOM API
+
+    console.log(findElemUsingQuerySelector.innerHTML='Best DOM API');  //here we change data DOM API to  Best DOM API'
+    
+    
+
+
+
+    //? querySelectorAll(selector): Find all elements that match the specified CSS selector.
+    
+   let findElemUsingQuerySelectorAll=document.querySelectorAll('li')  //this is a elem so we did not apply anything
+    console.log(findElemUsingQuerySelectorAll);  //return all NodeList(5) [li, li, li, li, li] to use loop to get all data
+    
+    
+
+
+
+
+
+
+
+      </script>
+</body>
+</html>
